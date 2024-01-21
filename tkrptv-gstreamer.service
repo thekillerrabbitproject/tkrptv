@@ -1,0 +1,10 @@
+[Unit]
+Description=Second Service After TKRPTV EDID Loader
+After=tkrptv.service
+
+[Service]
+Type=simple
+ExecStart=/home/persocon/v4l2script
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,13 @@
+[Unit]
+Description=TKRPTV - EDID loader for TC358743
+Wants=dev-video0.device
+After=dev-video0.device systemd-modules-load.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/v4l2-ctl --device=/dev/video0 --set-edid=file=/home/persocon/tkrptv.hex --fix-edid-checksums --info-edid
+ExecStop=/usr/bin/v4l2-ctl --device=/dev/video0 --clear-edid
+RemainAfterExit=true
+
+[Install]
+WantedBy=multi-user.target
